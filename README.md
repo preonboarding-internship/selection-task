@@ -93,6 +93,8 @@
 
 - URL: `/auth/signup`
 - Method: `POST`
+- Headers:
+  - Content-Type: `applocation/json`
 - Body:
   - email: string
   - password: string
@@ -111,6 +113,8 @@
 
 - URL: `/auth/signin`
 - Method: `POST`
+- Headers:
+  - Content-Type: `applocation/json`
 - Body:
   - email: string
   - password: string
@@ -133,6 +137,7 @@
 - Method: `POST`
 - Headers:
   - Authorization: `Bearer access_token`
+  - Content-Type: `applocation/json`
 - Body:
   - todo: string
 
@@ -187,6 +192,7 @@
 - Method: `PUT`
 - Headers:
   - Authorization: `Bearer access_token`
+  - Content-Type: `applocation/json`
 - Body:
   - todo: string
   - isCompleted: boolean
