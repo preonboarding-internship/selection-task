@@ -1,73 +1,76 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 원티드 프리온보딩 프론트엔드 - 선발 과제
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+이 레파지토리는 원티드 프리온보딩 프론트엔드 과정 선발 과제 안내 및 과제 간 사용하기 위한 API를 제공하기 위해 만들어졌습니다.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 안내 사항
 
-## Description
+- 본 과제는 프리온보딩 프론트엔드 코스 선발 과정에서 최소한의 수준을 파악하기 위한 용도입니다.
+- 제시된 과제의 수행 개수와 작성된 코드의 퀄리티를 기준으로 평가가 이루어집니다.
+- 이 레파지토리에서 제공된 API를 활용해서 선발 과제를 진행하게 됩니다.
+- API의 실행 및 사용법은 [API](#API) 챕터를 참고해주세요
+- 과제의 소스코드는 본인의 GitHub 레파지토리에 **Public**으로 올려주세요
+- 레파지토리 이름은 `wanted-pre-onboard-fe`로 생성해주세요
+- 제출한 링크가 잘못되었거나, 링크를 통해서 레파지토리에 접근할 수 없는 경우 과제를 확인할 수 없으니 주의해주세요
+- 과제 제출은 참가 신청시 수행한 과제의 레파지토리 주소를 제출해주세요
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 진행 가이드
 
-## Installation
+- Create React App을 이용해 과제를 구현해주세요
+- 함수 컴포넌트를 이용해서 진행해주세요
+- UI는 지원자 개인이 생각했을 때 자연스러운 형태로 구현해주세요, UI는 평가에 영향을 미치지 않습니다.
+- README.md 작성은 필수입니다. 아래의 사항은 반드시 포함되도록 해주세요
+  - 프로젝트의 실행 방법
+  - 데모 영상(링크로 대체 가능)
+- 기능구현에 직접적으로 연관된 라이브러리 사용은 허용되지 않습니다.
+- 사용가능한 라이브러리 목록은 아래와 같습니다.
+  - React Router
+  - HTTP Client 라이브러리(Axios 등)
+  - 스타일링 관련 라이브러리(Sass, Styled Components, Emotion 등)
+  - 아이콘 등 UI 관련 라이브러리(Font-Awesome, React-Icons, Bootstrap 등)
 
-```bash
-$ npm install
-```
+## 과제
 
-## Running the app
+---
 
-```bash
-# development
-$ npm run start
+### :: 1. 로그인 / 회원가입
 
-# watch mode
-$ npm run start:dev
+- `/` 경로에 로그인 / 회원가입 기능을 개발해주세요
+  - 페이지 안에 이메일 입력창, 비밀번호 입력창, 제출 버튼이 포함된 형태로 구성해주세요
+  - 로그인, 회원가입을 별도의 경로로 분리해도 무방합니다.
 
-# production mode
-$ npm run start:prod
-```
+#### Assignment1
 
-## Test
+- 이메일과 비밀번호의 유효성 검사기능을 구현해주세요
+  - 이메일 조건: `@` 포함
+  - 비밀번호 조건: 8자 이상
+  - 입력된 이메일과 비밀번호가 위 조건을 만족할 때만 버튼이 활성화 되도록 해주세요
 
-```bash
-# unit tests
-$ npm run test
+#### Assignment2
 
-# e2e tests
-$ npm run test:e2e
+- 로그인 API를 호출하고, 올바른 응답을 받았을 때 `/todo` 경로로 이동해주세요
+  - 로그인 API는 로그인이 성공했을 시 Response Body에 JWT를 포함해서 응답합니다.
+  - 응답받은 JWT는 로컬 스토리지에 저장해주세요
 
-# test coverage
-$ npm run test:cov
-```
+#### Assignment3
 
-## Support
+- 로그인 여부에 따른 리다이렉트 처리를 구현해주세요
+  - 로컬 스토리지에 토큰이 있는 상태로 `/` 페이지에 접속한다면 `/todo` 경로로 리다이렉트 시켜주세요
+  - 로컬 스토리지에 토큰이 없는 상태로 `/todo`페이지에 접속한다면 `/` 경로로 리다이렉트 시켜주세요
+  - 서버에서 JWT가 유효하지 않다는 응답을 받을 시(401) `/` 경로로 리다이렉트 시켜주세요
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+---
 
-## Stay in touch
+### :: 2. 투두 리스트
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+#### Assignment4
 
-## License
+- `/todo`경로에 접속하면 투두 리스트의 목록을 볼 수 있도록 해주세요
+- 리스트 페이지에는 투두 리스트의 내용과 완료 여부가 표시되어야 합니다.
+- 리스트 페이지에는 입력창과 추가 버튼이 있고, 추가 버튼을 누르면 입력창의 내용이 새로운 투두 리스트로 추가되도록 해주세요
 
-Nest is [MIT licensed](LICENSE).
+#### Assignment5
+
+- 투두 리스트의 수정, 삭제 기능을 구현해주세요
+  - 투두 리스트의 개별 아이템 우측에 수정버튼이 존재하고 해당 버튼을 누르면 수정모드가 활성화되고 투두 리스트의 내용을 수정할 수 있도록 해주세요
+  - 수정모드에서는 개별 아이템의 우측에 제출버튼과 취소버튼이 표시되며 해당 버튼을 통해서 수정 내용을 제출하거나 수정을 취소할 수 있도록 해주세요
+  - 투두 리스트의 개별 아이템 우측에 삭제버튼이 존재하고 해당 버튼을 누르면 투두 리스트가 삭제되도록 해주세요
