@@ -29,7 +29,9 @@
     "@nestjs/swagger": "^6.0.5",
     "@nestjs/typeorm": "^9.0.0",
     "@types/bcrypt": "^5.0.0",
+    "@vendia/serverless-express": "^4.10.1",
     "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "mysql": "^2.18.1",
@@ -39,6 +41,7 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
+    "serverless": "^3.21.0",
     "typeorm": "^0.3.7"
   },
   "devDependencies": {
@@ -58,6 +61,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "28.1.2",
     "prettier": "^2.3.2",
+    "serverless-jetpack": "^0.11.1",
     "source-map-support": "^0.5.20",
     "sqlite3": "^5.0.11",
     "supertest": "^6.1.3",

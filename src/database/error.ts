@@ -7,7 +7,7 @@ const SQLiteError: ERROR_CODE = {
 } as const;
 
 const MYSQLError: ERROR_CODE = {
-  unique: 1,
+  unique: 1062,
 } as const;
 
 export const ERROR_CODE =

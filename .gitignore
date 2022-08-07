@@ -36,3 +36,8 @@ lerna-debug.log*
 
 ## DB
 *.sqlite
+
+## Serverless
+rds.yaml
+serverless.yaml
+.serverless/

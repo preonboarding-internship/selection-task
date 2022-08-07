@@ -187,8 +187,8 @@
 - Headers:
   - Authorization: `Bearer access_token`
 - Body:
-  - todo:string
-  - isCompleted:boolean
+  - todo: string
+  - isCompleted: boolean
 
 ### 응답 예시
 
@@ -228,6 +228,6 @@ $ npm install
 $ npm start
 ```
 
-- 위 순서대로 실행하면 localhost:8000 포트에 서버가 실행되고 있습니다.
-- 서버를 실행하면 db.sqlite 파일이 생성되며 만약 해당 파일을 삭제 시 기존의 데이터는 초기화 됩니다.
+- 위 순서대로 실행하면 localhost:8000 포트에 서버가 실행됩니다.
+- 서버를 실행하면 db.sqlite 파일이 생성되며 해당 파일을 삭제 시 기존의 데이터는 초기화 됩니다.
 - 그 외 스펙은 배포된 API와 동일합니다.
