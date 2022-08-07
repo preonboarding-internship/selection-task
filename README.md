@@ -15,6 +15,8 @@
 
 ## 진행 가이드
 
+- **진행 간 문의사항은 이 레파지토리의 Issue로 등록해주세요**
+
 - Create React App을 이용해 과제를 구현해주세요
 - 함수 컴포넌트를 이용해서 진행해주세요
 - UI는 지원자 개인이 생각했을 때 자연스러운 형태로 구현해주세요, UI는 평가에 영향을 미치지 않습니다.
@@ -44,6 +46,7 @@
   - 이메일 조건: `@` 포함
   - 비밀번호 조건: 8자 이상
   - 입력된 이메일과 비밀번호가 위 조건을 만족할 때만 버튼이 활성화 되도록 해주세요
+  - 보안 상 실제 사용하고 계신 이메일과 패스워드말고 테스트용 이메일, 패스워드 사용을 권장드립니다.
 
 #### Assignment2
 
@@ -74,3 +77,157 @@
   - 투두 리스트의 개별 아이템 우측에 수정버튼이 존재하고 해당 버튼을 누르면 수정모드가 활성화되고 투두 리스트의 내용을 수정할 수 있도록 해주세요
   - 수정모드에서는 개별 아이템의 우측에 제출버튼과 취소버튼이 표시되며 해당 버튼을 통해서 수정 내용을 제출하거나 수정을 취소할 수 있도록 해주세요
   - 투두 리스트의 개별 아이템 우측에 삭제버튼이 존재하고 해당 버튼을 누르면 투두 리스트가 삭제되도록 해주세요
+
+# API
+
+## 스펙
+
+## 1) Auth
+
+---
+
+## 1-1) SignUp
+
+### 요청
+
+- URL: `/auth/signup`
+- Method: `POST`
+- Body:
+  - email: string
+  - password: string
+
+### 응답 예시
+
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwic3ViIjo0LCJpYXQiOjE2NTk5MDQyMTUsImV4cCI6MTY2MDUwOTAxNX0.DyUCCsIGxIl8i_sGFCa3uQcyEDb9dChjbl40h3JWJNc"
+}
+```
+
+## 1-2) SignIn
+
+### 요청
+
+- URL: `/auth/signin`
+- Method: `POST`
+- Body:
+  - email: string
+  - password: string
+
+### 응답 예시
+
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwic3ViIjo0LCJpYXQiOjE2NTk5MDQyMTUsImV4cCI6MTY2MDUwOTAxNX0.DyUCCsIGxIl8i_sGFCa3uQcyEDb9dChjbl40h3JWJNc"
+}
+```
+
+## 2) Todo
+
+## 2-1) createTodo
+
+### 요청
+
+- URL: `/todos`
+- Method: `POST`
+- Headers:
+  - Authorization: `Bearer access_token`
+- Body:
+  - todo: string
+
+### 응답 예시
+
+- status: 201 Created
+
+```json
+{
+  "id": 1,
+  "todo": "과제하기",
+  "isCompleted": false
+  "userId": 1,
+}
+```
+
+## 2-2) getTodos
+
+### 요청
+
+- URL: `/todos`
+- Method: `GET`
+- Headers:
+  - Authorization: `Bearer access_token`
+
+### 응답 예시
+
+- status: 200 OK
+
+```json
+[
+  {
+    "id": 1,
+    "todo": "todo2",
+    "isCompleted": false,
+    "userId": 1
+  },
+  {
+    "id": 2,
+    "todo": "todo3",
+    "isCompleted": false,
+    "userId": 1
+  }
+]
+```
+
+## 2-3) updateTodo
+
+### 요청
+
+- URL: `/todos/:id`
+- Method: `PUT`
+- Headers:
+  - Authorization: `Bearer access_token`
+- Body:
+  - todo:string
+  - isCompleted:boolean
+
+### 응답 예시
+
+- status: 200 OK
+
+```json
+{
+  "id": 1,
+  "todo": "Hello World",
+  "isCompleted": true,
+  "userId": 2
+}
+```
+
+## 2-4) deleteTodo
+
+### 요청
+
+- URL: `/todos/:id`
+- Method: `DELETE`
+- Headers:
+  - Authorization: `Bearer access_token`
+
+### 응답 예시
+
+- status: 204 No Content
+- body: 없음
+
+## 로컬 서버 구동
+
+- 배포된 API에 문제가 있는 경우 활용할 수 있는 로컬 서버 구동법입니다.
+
+### 설치 및 실행
+
+```zsh
+$ npm install
+$ npm start
+```
+
+- 위 순서대로 실행하면 localhost:8000 포트에 서버가 실행되고 있습니다.
+- 서버를 실행하면 db.sqlite 파일이 생성되며 만약 해당 파일을 삭제 시 기존의 데이터는 초기화 됩니다.
+- 그 외 스펙은 배포된 API와 동일합니다.

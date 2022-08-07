@@ -1,14 +1,27 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: true });
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
     }),
   );
-  await app.listen(3000);
+
+  const config = new DocumentBuilder()
+    .setTitle('Pre Onboard API')
+    .setDescription('원티드 프리온보딩 사전과제용 API입니다.')
+    .setVersion('1.0')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('docs', app, document);
+
+  const port = process.env.PORT || 8000;
+  await app.listen(port);
+
+  console.log(`server is running on ${port}`);
 }
 bootstrap();

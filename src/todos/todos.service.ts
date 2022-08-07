@@ -1,20 +1,21 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CreateTodoDto } from './create-todo.dto';
-import { Todos } from './todos.entity';
+import { CreateTodoDto } from './dto/create-todo.dto';
+import { UpdateTodoDto } from './dto/update-todo.dto';
+import { Todo } from './todos.entity';
 
 @Injectable()
 export class TodosService {
-  constructor(@InjectRepository(Todos) private todos: Repository<Todos>) {}
+  constructor(@InjectRepository(Todo) private todos: Repository<Todo>) {}
 
-  create(body: CreateTodoDto) {
-    const todo = this.todos.create(body);
+  create(body: CreateTodoDto, userId: number) {
+    const todo = this.todos.create({ ...body, userId });
     return this.todos.save(todo);
   }
 
-  find() {
-    return this.todos.find();
+  findByUserId(userId: number) {
+    return this.todos.findBy({ userId });
   }
 
   findOne(id: number) {
@@ -26,7 +27,7 @@ export class TodosService {
     });
   }
 
-  async update(id: number) {
+  async update(id: number, todoDto: UpdateTodoDto) {
     const todo = await this.todos.findOne({
       where: {
         id,
@@ -34,9 +35,23 @@ export class TodosService {
     });
 
     if (!todo) {
-      throw new NotFoundException(`Todo id: ${id} not found`);
+      throw new NotFoundException(`todo id: ${id} not found`);
     }
 
-    return this.todos.save({ ...todo, isCompleted: true });
+    return this.todos.save({ ...todo, ...todoDto });
+  }
+
+  async delete(id: number) {
+    const todo = await this.todos.findOne({
+      where: {
+        id,
+      },
+    });
+
+    if (!todo) {
+      throw new NotFoundException(`todo id: ${id} not found`);
+    }
+
+    return this.todos.remove(todo);
   }
 }
