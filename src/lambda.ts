@@ -8,7 +8,10 @@ let cachedServer;
 
 export const handler = async (event, context) => {
   if (!cachedServer) {
-    const app = await NestFactory.create(AppModule, { cors: true });
+    const app = await NestFactory.create(AppModule, {
+      cors: true,
+      logger: ['log', 'error', 'warn', 'debug'],
+    });
     app.useGlobalPipes(
       new ValidationPipe({
         whitelist: true,
