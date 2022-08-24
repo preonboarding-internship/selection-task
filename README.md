@@ -80,6 +80,7 @@
 # API
 
 - API 주소: https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/
+  - 사전과제 제출 기간이 종료되어 해당 API 서버는 종료되었습니다
 
 ## 스펙
 
