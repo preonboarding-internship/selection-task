@@ -80,7 +80,7 @@
 
 # API
 
-- API 주소: https://n38lcff1wk.execute-api.ap-northeast-2.amazonaws.com
+- API 주소: http://ec2-3-38-135-202.ap-northeast-2.compute.amazonaws.com:8000
 
 ## 스펙
 

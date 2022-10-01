@@ -41,3 +41,6 @@ lerna-debug.log*
 rds.yaml
 serverless.yaml
 .serverless/
+
+#ENV
+.env
