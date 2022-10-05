@@ -1,12 +1,18 @@
+import * as fs from 'fs';
+import * as http from 'http';
+import * as https from 'https';
+import * as express from 'express';
+import { ExpressAdapter } from '@nestjs/platform-express';
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as dotenv from 'dotenv';
 dotenv.config();
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, {
+  const server = express();
+  const adapter = new ExpressAdapter(server);
+  const app = await NestFactory.create(AppModule, adapter, {
     cors: true,
     logger: ['log', 'error', 'warn', 'debug'],
   });
@@ -15,18 +21,21 @@ async function bootstrap() {
       whitelist: true,
     }),
   );
-
-  const config = new DocumentBuilder()
-    .setTitle('Pre Onboard API')
-    .setDescription('원티드 프리온보딩 사전과제용 API입니다.')
-    .setVersion('1.0')
-    .build();
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('docs', app, document);
+  await app.init();
 
   const port = process.env.PORT || 8000;
-  await app.listen(port);
+  http.createServer(server).listen(port);
+  console.info('server is running on ', port);
 
-  console.log(`server is running on ${port}`);
+  const httpsPort = process.env.HTTPS_PORT;
+  if (httpsPort) {
+    const httpsOptions = {
+      ca: fs.readFileSync(__dirname + '/../ssl/ca_bundle.crt'),
+      key: fs.readFileSync(__dirname + '/../ssl/private.key'),
+      cert: fs.readFileSync(__dirname + '/../ssl/certificate.crt'),
+    };
+    https.createServer(httpsOptions, server).listen(httpsPort);
+    console.info('server is running on ', httpsPort);
+  }
 }
 bootstrap();
