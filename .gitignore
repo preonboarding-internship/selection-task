@@ -44,6 +44,3 @@ serverless.yaml
 
 #ENV
 .env
-
-#SSL
-/ssl
