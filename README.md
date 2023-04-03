@@ -208,7 +208,7 @@
 
 # API
 
-- API 주소: [https://pre-onboarding-selection-task.shop/](https://pre-onboarding-selection-task.shop/)
+- API 주소: [https://www.pre-onboarding-selection-task.shop/](https://www.pre-onboarding-selection-task.shop)
 
 ## 스펙
 
