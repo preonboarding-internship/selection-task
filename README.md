@@ -209,6 +209,12 @@
 
 - API 주소: [https://www.pre-onboarding-selection-task.shop/](https://www.pre-onboarding-selection-task.shop)
 
+## 안내문
+
+API 통신 과정에서 발생한 문제를 이슈를 통해 문의하실 경우, 문의 내용에 통신의 요청과 응답에 대한 정보를 제공해주셔야 문제의 원인을 파악할 수 있습니다.
+
+요청과 응답에 대한 정보는 URL, Method, Headers, Body, StatusCode등을 의미합니다.
+
 ## 스펙
 
 ## 1) Auth
