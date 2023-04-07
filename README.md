@@ -54,7 +54,7 @@
   - HTTP Client 라이브러리(Axios 등)
   - 스타일링 관련 라이브러리(Sass, Styled Components, Emotion, tailwind 등)
   - 아이콘 등 UI 관련 라이브러리(Font-Awesome, React-Icons, Bootstrap 등)
-  - 기능과 직접적인 연관이 없는 설정관련 라이브러리(craco, dotenv 등)
+  - 기능과 직접적인 연관이 없는 설정관련 라이브러리(craco, dotenv, typescript, testing library 등)
 
 ## 과제
 
@@ -66,20 +66,19 @@
 
 - `/signup` 경로에 회원가입 기능을 개발해주세요
 - `/signin` 경로에 로그인 기능을 개발해주세요
+- 페이지 안에 이메일 input, 비밀번호 input, 제출 button이 포함된 형태로 구성해주세요
 
-  - 페이지 안에 이메일 input, 비밀번호 input, 제출 button이 포함된 형태로 구성해주세요
+  - 이메일 input에 `data-testid="email-input"` 속성을 부여해주세요
+  - 패스워드 input에 `data-testid="password-input"` 속성을 부여해주세요
+  - 회원가입 페이지에는 회원가입 button에 `data-testid="signup-button"` 속성을 부여해주세요
+  - 로그인 페이지에는 로그인 button에 `data-testid="signin-button"` 속성을 부여해주세요
 
-    - 이메일 input에 `data-testid="email-input"` 속성을 부여해주세요
-    - 패스워드 input에 `data-testid="password-input"` 속성을 부여해주세요
-    - 회원가입 button에 `data-testid="signup-button"` 속성을 부여해주세요
-    - 로그인 button에 `data-testid="signin-button"` 속성을 부여해주세요
-
-    ```html
-    <!-- 예시 -->
-    <input data-testid="email-input" />
-    <input data-testid="password-input" />
-    <button data-testid="signup-button">회원가입</button>
-    ```
+  ```html
+  <!-- 예시 -->
+  <input data-testid="email-input" />
+  <input data-testid="password-input" />
+  <button data-testid="signup-button">회원가입</button>
+  ```
 
 - 두 페이지의 UI는 동일해도 무방합니다.
 - 회원가입과 로그인 페이지의 버튼에 부여되는 test-id가 다른 것에 유의해주세요
@@ -324,7 +323,7 @@
 - Body:
   - todo: string
   - isCompleted: boolean
-  
+
 ### 요청 예시
 
 - URL: `/todos/1`
@@ -332,7 +331,7 @@
   ```json
   {
     "todo": "Hello World",
-    "isCompleted": true,
+    "isCompleted": true
   }
   ```
 
@@ -357,12 +356,11 @@
 - Method: `DELETE`
 - Headers:
   - Authorization: `Bearer access_token`
-  
+
 ### 요청 예시
 
 - URL: `/todos/1`
 - body: 없음
-
 
 ### 응답 예시
 
