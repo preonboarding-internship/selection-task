@@ -6,11 +6,11 @@
 
 ## 프로젝트의 실행 방법
 
-### `git clone https://github.com/hyerimhan/wanted-pre-onboarding-frontend.git`
+### 1. `git clone https://github.com/hyerimhan/wanted-pre-onboarding-frontend.git`
 
-### `npm install`
+### 2. `npm install`
 
-### `npm start`
+### 3. `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
