@@ -1,7 +1,12 @@
 import React from 'react'
 
-const Button = () => {
-  return <div>Button</div>
+interface IButton {
+  text: string
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
+}
+
+const Button = ({ text, onClick }: IButton) => {
+  return <button onClick={onClick}>{text}</button>
 }
 
 export default Button
