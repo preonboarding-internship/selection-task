@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Title from '../component/common/Title'
 import { FormStyle } from './SignUp'
@@ -7,9 +7,41 @@ import Button from '../component/common/Button'
 import { useNavigate } from 'react-router-dom'
 import COLORS from '../constant/root'
 import { ROUTES } from '../constant/routes'
+import { SIGNIN } from '../api/auth'
+import { setCookie } from '../util/cookie'
 
 const SignIn = () => {
   const navigate = useNavigate()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [disabled, setDisabled] = useState(false)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, type } = e.target
+    switch (type) {
+      case 'email':
+        setEmail(value)
+        break
+      case 'password':
+        setPassword(value)
+        break
+    }
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    try {
+      setDisabled(true)
+      await SIGNIN({
+        email: email,
+        password: password,
+      })
+      alert('환영합니다!')
+      navigate(ROUTES.TODO)
+    } finally {
+      setDisabled(false)
+    }
+  }
 
   return (
     <SignInStyle>
@@ -18,20 +50,24 @@ const SignIn = () => {
         title='로그인'
         margin='0 0 50px'
       />
-      <FormStyle>
+      <FormStyle onSubmit={handleSubmit}>
         <Input
           dataTestid='email-input'
+          type='email'
           placeholder='이메일'
+          onChange={handleChange}
         />
         <Input
           dataTestid='password-input'
           type='password'
           placeholder='비밀번호'
+          onChange={handleChange}
         />
         <Button
           type='submit'
           dataTestid='signin-button'
           text='로그인'
+          isDisabled={disabled}
         />
       </FormStyle>
       <Button
