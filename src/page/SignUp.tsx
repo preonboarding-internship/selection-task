@@ -34,8 +34,7 @@ const SignUp = () => {
         email: email,
         password: password,
       })
-      alert('회원가입이 성공하였습니다!')
-      alert('로그인 페이지로 넘어갑니다!')
+      alert('회원가입이 성공하였습니다!\n로그인을 시도해주세요.')
       navigate(ROUTES.SIGNIN)
     } finally {
       setDisabled(false)
