@@ -4,6 +4,7 @@ import COLORS from '../../constant/root'
 
 interface IButton {
   buttonType?: string
+  type?: 'button' | 'submit'
   text: string
   dataTestid?: string
   bgColor?: string
@@ -14,6 +15,7 @@ interface IButton {
 
 const Button = ({
   buttonType = 'primaryType',
+  type = 'button',
   text,
   dataTestid,
   bgColor = '',
@@ -24,11 +26,12 @@ const Button = ({
   return (
     <ButtonStyle
       buttonType={buttonType}
+      type={type}
       data-testid={dataTestid}
-      onClick={onClick}
       bgColor={bgColor}
       color={color}
       disabled={isDisabled}
+      onClick={onClick}
     >
       {text}
     </ButtonStyle>
@@ -40,11 +43,13 @@ export default Button
 const ButtonStyle = styled.button<{
   buttonType: string
   bgColor: string
+  disabled: boolean
 }>`
   height: 50px;
   padding: 0 50px;
   ${({ buttonType }) => handleButtonType(buttonType)}
-  background-color: ${({ bgColor }) => bgColor};
+  background-color: ${({ bgColor, disabled }) =>
+    bgColor || (disabled && COLORS.gray)};
   color: ${({ color }) => color};
   border-radius: 10px;
 `

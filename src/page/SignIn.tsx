@@ -25,9 +25,11 @@ const SignIn = () => {
         />
         <Input
           dataTestid='password-input'
+          type='password'
           placeholder='비밀번호'
         />
         <Button
+          type='submit'
           dataTestid='signin-button'
           text='로그인'
         />
