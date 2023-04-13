@@ -1,5 +1,5 @@
 import axios from "axios"
-
+import { getCookie, removeCookie, setCookie } from "../util/cookie"
 const API_BASE_URL = process.env.REACT_APP_API_KEY
 
 const axiosApi = (url: string) => {
@@ -10,6 +10,8 @@ const axiosApi = (url: string) => {
 
   instance.interceptors.response.use(
     (response) => {
+      const responseToken = response.data.access_token
+      responseToken ? setCookie('accessToken', responseToken) : removeCookie('accessToken')
       return response.data
     },
     (error) => {
@@ -21,7 +23,7 @@ const axiosApi = (url: string) => {
 
   instance.interceptors.request.use(
     (config) => {
-      const token = localStorage.getItem('accessToken')
+      const token = getCookie('accessToken')
       if (token) config.headers['Authorization'] = `Bearer ${token}`
       return config
     },
