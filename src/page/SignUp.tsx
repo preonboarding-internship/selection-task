@@ -4,10 +4,9 @@ import Input from '../component/common/Input'
 import Title from '../component/common/Title'
 import Button from '../component/common/Button'
 import COLORS from '../constant/root'
-import { Route, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../constant/routes'
 import { SIGNUP } from '../api/auth'
-import { errorMonitor } from 'events'
 
 const SignUp = () => {
   const navigate = useNavigate()
