@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import COLORS from '../../constant/root'
 
@@ -8,6 +7,7 @@ interface IInput {
   placeholder?: string
   dataTestid?: string
   children?: React.ReactNode
+  onChange?: React.ChangeEventHandler<HTMLInputElement>
 }
 
 const Input = ({
@@ -16,6 +16,7 @@ const Input = ({
   placeholder,
   dataTestid,
   children,
+  onChange,
 }: IInput) => {
   return (
     <InputStyle inputType={inputType}>
@@ -23,6 +24,7 @@ const Input = ({
         data-testid={dataTestid}
         type={type}
         placeholder={placeholder}
+        onChange={onChange}
       />
       {children}
     </InputStyle>
