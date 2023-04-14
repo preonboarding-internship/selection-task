@@ -1,12 +1,13 @@
 import React from 'react'
 import Button from '../component/common/Button'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { ROUTES } from '../constant/routes'
 import styled from 'styled-components'
 import Title from '../component/common/Title'
 
 const Home = () => {
   const navigate = useNavigate()
+
   return (
     <HomeStyle>
       <Title

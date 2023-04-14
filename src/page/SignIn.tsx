@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Title from '../component/common/Title'
 import { FormStyle } from './SignUp'
@@ -8,13 +8,21 @@ import { useNavigate } from 'react-router-dom'
 import COLORS from '../constant/root'
 import { ROUTES } from '../constant/routes'
 import { SIGNIN } from '../api/auth'
-import { setCookie } from '../util/cookie'
+import { getCookie } from '../util/cookie'
 
 const SignIn = () => {
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [disabled, setDisabled] = useState(false)
+  const accessToken = getCookie('accessToken')
+
+  useEffect(() => {
+    if (accessToken) {
+      navigate(ROUTES.TODO)
+      alert('로그인 상태입니다!')
+    }
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, type } = e.target
