@@ -20,7 +20,7 @@ const Todo = () => {
     ;(async () => {
       setTodos(await GETTODO())
     })()
-  }, [])
+  }, [todos])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
