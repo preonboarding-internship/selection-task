@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Button from './Button'
 import COLORS from '../../constant/root'
@@ -6,15 +6,18 @@ import COLORS from '../../constant/root'
 interface ITodoItem {
   id: string
   content: string
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onClick: () => void
 }
 
-const TodoItem = ({ id, content }: ITodoItem) => {
+const TodoItem = ({ id, content, onChange, onClick }: ITodoItem) => {
   return (
     <TodoItemStyle>
       <label htmlFor={id}>
         <input
           type='checkbox'
           id={id}
+          onChange={onChange}
         />
         <span>{content}</span>
       </label>
@@ -29,6 +32,7 @@ const TodoItem = ({ id, content }: ITodoItem) => {
           text='삭제'
           bgColor={COLORS.red}
           color={COLORS.white}
+          onClick={onClick}
         />
       </ButtonsStyle>
     </TodoItemStyle>

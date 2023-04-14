@@ -39,6 +39,7 @@ const SignIn = () => {
   }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
     const current = e.target.value
 
     switch (e.target.type) {
