@@ -8,11 +8,22 @@ import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '../constant/routes'
 import { SIGNUP } from '../api/auth'
 import { getCookie } from '../util/cookie'
+import { IAuth, IAuthValid, IAuthValidError } from '../interface/auth'
 
 const SignUp = () => {
   const navigate = useNavigate()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [form, setForm] = useState<IAuth>({
+    email: '',
+    password: '',
+  })
+  const [isValid, setIsValid] = useState<IAuthValid>({
+    isEmail: false,
+    isPassword: false,
+  })
+  const [errorMessage, setErrorMessage] = useState<IAuthValidError>({
+    emailError: '',
+    passwordError: '',
+  })
   const [disabled, setDisabled] = useState(false)
   const accessToken = getCookie('accessToken')
 
@@ -24,13 +35,42 @@ const SignUp = () => {
   }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, type } = e.target
-    switch (type) {
+    const current = e.target.value
+
+    switch (e.target.type) {
       case 'email':
-        setEmail(value)
+        const regex = /\S+@\S+\.\S+/
+
+        if (!regex.test(current)) {
+          setErrorMessage({
+            ...errorMessage,
+            emailError: '이메일 형식을 확인해주세요.',
+          })
+          setIsValid({ ...isValid, isEmail: false })
+        } else {
+          setErrorMessage({
+            ...errorMessage,
+            emailError: '',
+          })
+          setIsValid({ ...isValid, isEmail: true })
+        }
+        setForm({ ...form, email: current })
         break
       case 'password':
-        setPassword(value)
+        if (current.length < 8) {
+          setErrorMessage({
+            ...errorMessage,
+            passwordError: '8자 이상 입력해주세요.',
+          })
+          setIsValid({ ...isValid, isPassword: false })
+        } else {
+          setErrorMessage({
+            ...errorMessage,
+            passwordError: '',
+          })
+          setIsValid({ ...isValid, isPassword: true })
+        }
+        setForm({ ...form, password: current })
         break
     }
   }
@@ -40,8 +80,8 @@ const SignUp = () => {
     try {
       setDisabled(true)
       await SIGNUP({
-        email: email,
-        password: password,
+        email: form.email,
+        password: form.password,
       })
       alert('회원가입이 성공하였습니다!\n로그인을 시도해주세요.')
       navigate(ROUTES.SIGNIN)
@@ -62,13 +102,16 @@ const SignUp = () => {
           dataTestid='email-input'
           type='email'
           placeholder='이메일'
+          item={form.email}
+          errorMessage={errorMessage.emailError}
           onChange={handleChange}
-          // onInvalid={}
         />
         <Input
           dataTestid='password-input'
           type='password'
           placeholder='비밀번호'
+          item={form.password}
+          errorMessage={errorMessage.passwordError}
           onChange={handleChange}
         />
         <Button
@@ -101,4 +144,9 @@ export const FormStyle = styled.form`
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  .inValid {
+    color: ${COLORS.red};
+    font-size: 14px;
+  }
 `

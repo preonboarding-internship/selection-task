@@ -4,18 +4,20 @@ import COLORS from '../../constant/root'
 interface IInput {
   inputType?: string
   type?: string
+  item?: string
+  errorMessage?: string
   placeholder?: string
   dataTestid?: string
-  children?: React.ReactNode
   onChange?: React.ChangeEventHandler<HTMLInputElement>
 }
 
 const Input = ({
   inputType = 'textType',
   type = 'text',
+  item = '',
+  errorMessage,
   placeholder,
   dataTestid,
-  children,
   onChange,
 }: IInput) => {
   return (
@@ -26,7 +28,9 @@ const Input = ({
         placeholder={placeholder}
         onChange={onChange}
       />
-      {children}
+      {item.length > 0 && errorMessage ? (
+        <p className='inValid'>{errorMessage}</p>
+      ) : null}
     </InputStyle>
   )
 }
@@ -36,10 +40,9 @@ export default Input
 const InputStyle = styled.div<{
   inputType: string
 }>`
-  border: 1px solid ${COLORS.primary};
-  border-radius: 5px;
-
   input {
+    border: 1px solid ${COLORS.primary};
+    border-radius: 5px;
     padding: 15px 30px;
   }
 
