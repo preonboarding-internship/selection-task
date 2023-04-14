@@ -52,6 +52,7 @@ const ButtonStyle = styled.button<{
     bgColor || (disabled && COLORS.gray)};
   color: ${({ color }) => color};
   border-radius: 10px;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'cursor')};
 `
 
 const handleButtonType = (buttonType: string) => {
