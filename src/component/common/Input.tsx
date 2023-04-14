@@ -44,6 +44,7 @@ const InputStyle = styled.div<{
     border: 1px solid ${COLORS.primary};
     border-radius: 5px;
     padding: 15px 30px;
+    background-color: ${COLORS.white};
   }
 
   ${({ inputType }) => handleInputType(inputType)}
