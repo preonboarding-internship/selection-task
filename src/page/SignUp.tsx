@@ -24,13 +24,16 @@ const SignUp = () => {
     emailError: '',
     passwordError: '',
   })
-  const [disabled, setDisabled] = useState(false)
+  const [disabled, setDisabled] = useState(true)
   const accessToken = getCookie('accessToken')
 
   useEffect(() => {
     if (accessToken) {
       navigate(ROUTES.TODO)
       alert('로그인 상태입니다!')
+    }
+    if (isValid.isEmail && isValid.isPassword) {
+      setDisabled(false)
     }
   }, [])
 
@@ -47,6 +50,7 @@ const SignUp = () => {
             emailError: '이메일 형식을 확인해주세요.',
           })
           setIsValid({ ...isValid, isEmail: false })
+          setDisabled(true)
         } else {
           setErrorMessage({
             ...errorMessage,
@@ -63,12 +67,14 @@ const SignUp = () => {
             passwordError: '8자 이상 입력해주세요.',
           })
           setIsValid({ ...isValid, isPassword: false })
+          setDisabled(true)
         } else {
           setErrorMessage({
             ...errorMessage,
             passwordError: '',
           })
           setIsValid({ ...isValid, isPassword: true })
+          setDisabled(false)
         }
         setForm({ ...form, password: current })
         break
