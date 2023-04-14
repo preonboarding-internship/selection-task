@@ -11,7 +11,7 @@ const axiosApi = (url: string) => {
   instance.interceptors.response.use(
     (response) => {
       const responseToken = response.data.access_token
-      responseToken ? setCookie('accessToken', responseToken) : removeCookie('accessToken')
+      responseToken && setCookie('accessToken', responseToken) 
       return response.data
     },
     (error) => {
