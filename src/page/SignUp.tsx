@@ -91,6 +91,8 @@ const SignUp = () => {
       })
       alert('회원가입이 성공하였습니다!\n로그인을 시도해주세요.')
       navigate(ROUTES.SIGNIN)
+    } catch (error: any) {
+      alert(error.response.data.message)
     } finally {
       setDisabled(false)
     }
