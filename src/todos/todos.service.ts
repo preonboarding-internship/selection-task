@@ -54,4 +54,10 @@ export class TodosService {
 
     return this.todos.remove(todo);
   }
+
+  async deleteAllByUserId(userId: number) {
+    const todos = await this.findByUserId(userId);
+
+    return this.todos.remove(todos);
+  }
 }

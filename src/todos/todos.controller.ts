@@ -43,4 +43,11 @@ export class TodosController {
   async findTodoById(@Param('id') id: string) {
     await this.todoService.delete(parseInt(id));
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete('/delete/all')
+  @HttpCode(204)
+  async deleteAll(@Req() req: any) {
+    return this.todoService.deleteAllByUserId(req.user.userId);
+  }
 }
