@@ -41,6 +41,7 @@
 - 함수 컴포넌트를 이용해서 진행해주세요
 - UI는 지원자 개인이 생각했을 때 자연스러운 형태로 구현해주세요, UI는 평가에 영향을 미치지 않습니다.
 - README.md 작성은 필수입니다. 아래의 사항은 반드시 포함되도록 해주세요
+  - 지원자의 성명
   - 프로젝트의 실행 방법
   - 데모 영상
   - 데모 영상은 배포 링크로 대체 가능하며, 배포가 되었고 배포된 사이트에서 기능이 모두 동작하면 가산점이 부여됩니다.
@@ -55,6 +56,16 @@
   - 스타일링 관련 라이브러리(Sass, Styled Components, Emotion, tailwind 등)
   - 아이콘 등 UI 관련 라이브러리(Font-Awesome, React-Icons, Bootstrap 등)
   - 기능과 직접적인 연관이 없는 설정관련 라이브러리(craco, dotenv, typescript, testing library 등)
+- package.json의 dependencies, devDependencies에 기재가 되어 있다면 실제 코드에서의 사용 여부와 관계없이 라이브러리를 사용한 것으로 간주됩니다.
+- 페이지별로 요구되는 경로는 도메인 URL뒤에 바로 이어지도록 설정해주세요
+  - 옳은 예시
+    - localhost:3000/signup
+    - publish-url/singup
+  - 잘못된 예시
+    - localhost:3000/wanted-pre-onboarding-frontend/signup
+    - publish-url/wanted-pre-onboarding-frontend/singup
+    - localhost:3000/#/signup
+    - publish-url/#/signup
 
 ## 과제
 
