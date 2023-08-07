@@ -32,7 +32,8 @@
 
 ## 진행 가이드
 
-- **진행 간 문의사항은 이 레파지토리의 Issue로 등록해주세요**
+- **사전과제 진행 간 문의사항은 이 레파지토리의 Issue로 등록해주세요**
+  - 사전과제 외의 프리온보딩 인턴십의 운영관련 문의사항은 learning@wantedlab.com에 메일을 통해 문의해주세요
 
 - Create React App을 이용해 과제를 구현해주세요
   - 환경설정의 일관성을 위해 Create React App외의 다른 툴체인 사용은 허용하지 않습니다(Vite, Next.js 등)
@@ -52,7 +53,7 @@
       - "/" URL이 아닌 "/signup"등의 경로로 바로 접속할 경우 404 에러 페이지 표출 등
 - 기능구현에 직접적으로 연관된 라이브러리 사용은 허용되지 않습니다.(React-Query 등)
 - 사용가능한 라이브러리 목록은 아래와 같습니다.
-  - React Router
+  - React Router(react-router-dom)
   - HTTP Client 라이브러리(Axios 등)
   - 스타일링 관련 라이브러리(Sass, Styled Components, Emotion, tailwind 등)
   - 아이콘 등 UI 관련 라이브러리(Font-Awesome, React-Icons, Bootstrap 등)
