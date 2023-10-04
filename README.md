@@ -33,6 +33,7 @@
 ## 진행 가이드
 
 - **사전과제 진행 간 문의사항은 이 레파지토리의 Issue로 등록해주세요**
+
   - 사전과제 외의 프리온보딩 인턴십의 운영관련 문의사항은 learning@wantedlab.com에 메일을 통해 문의해주세요
 
 - Create React App을 이용해 과제를 구현해주세요
@@ -220,7 +221,7 @@
 
 # API
 
-- API 주소: [https://www.pre-onboarding-selection-task.shop/](https://www.pre-onboarding-selection-task.shop)
+- API 주소: [https://www.pre-onboarding-selection-task.store/](https://www.pre-onboarding-selection-task.store)
 
 ## 안내문
 
